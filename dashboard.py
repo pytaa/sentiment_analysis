@@ -75,7 +75,7 @@ with m2:
     st.metric(
         label="😊 Sentimen Positif di Threads",
         value=f"~{threads_pos:.0f}%",
-        delta="+{threads_pos - get_pct(q1_plot, 'platform', 'xtwitter', 'positive'):.1f}pp vs X",
+        delta=f"+{threads_pos - get_pct(q1_plot, 'platform', 'xtwitter', 'positive'):.1f}pp vs X",
         delta_color="normal"
     )
     st.caption("Platform Threads · Q1 2026 · Transformasi digital")
