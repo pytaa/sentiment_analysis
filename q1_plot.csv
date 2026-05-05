@@ -1,0 +1,7 @@
+platform,sentimen,persentase
+threads,negative,8.333333333333332
+xtwitter,negative,1.0395010395010396
+threads,neutral,70.83333333333334
+xtwitter,neutral,85.23908523908524
+threads,positive,20.833333333333336
+xtwitter,positive,13.721413721413722
