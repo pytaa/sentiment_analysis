@@ -10,9 +10,12 @@ st.set_page_config(page_title="Telkom Social Media Analytics", layout="wide", pa
 # ─── 2. LOAD DATA DARI CSV ────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    q1_plot = pd.read_csv(os.path.join(base_dir, 'q1_plot.csv'))
-    q2_plot = pd.read_csv(os.path.join(base_dir, 'q2_plot.csv'))
+    # Kode sakti agar Python tidak nyasar nyari file
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+
+    # Load data dengan jalur yang pasti benar
+    q1_plot = pd.read_csv(os.path.join(current_dir, "q1_plot.csv"))
+    q2_plot = pd.read_csv(os.path.join(current_dir, "q2_plot.csv"))
     return q1_plot, q2_plot
 
 q1_plot, q2_plot = load_data()
@@ -63,7 +66,7 @@ with m1:
     st.metric(
         label="😐 Sentimen Dominan di X",
         value=f"~{x_neutral:.0f}%",
-        delta="Neutral · Observatif",
+        delta="Netral · Observatif",
         delta_color="off"
     )
     st.caption("Platform X · Q1 2026 · Topik infrastruktur")
@@ -72,7 +75,7 @@ with m2:
     st.metric(
         label="😊 Sentimen Positif di Threads",
         value=f"~{threads_pos:.0f}%",
-        delta=f"+{threads_pos - get_pct(q1_plot, 'platform', 'xtwitter', 'positive'):.1f}pp vs X",
+        delta="+{threads_pos - get_pct(q1_plot, 'platform', 'xtwitter', 'positive'):.1f}pp vs X",
         delta_color="normal"
     )
     st.caption("Platform Threads · Q1 2026 · Transformasi digital")
